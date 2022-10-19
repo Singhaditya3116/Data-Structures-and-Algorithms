@@ -10,10 +10,10 @@ private:
     int capacity;
 
 public:
-    stackUsingArray(int totalsize)
+    stackUsingArray()
     {
-        data=new T[totalsize];
-        capacity=totalsize;
+        data=new T[2];
+        capacity=2;
     }
 
     //returns the number of element present in the stack
@@ -39,14 +39,15 @@ public:
     {
         if((top+1)>=capacity)
         {
-            //cout <<"Stack Overlow"<<endl;
-            T *newData = new T[capacity*2];
+            //cout <<"Stack OverFlow"<<endl;
+            T *newArray = new T[capacity*2];
             for(int i=0;i<capacity;i++)
             {
-                newData[i]=data[i];
+                newArray[i]=data[i];
             }
             capacity*=2;
-            data=newData;
+            delete [] data;
+            data=newArray;
         }
         top++;
         data[top]=value;
@@ -80,13 +81,17 @@ public:
 
 int main()
 {
-    stackUsingArray<char> s(4);
+    stackUsingArray<char> s;
 
     s.push('A');
     s.push('B');
+    //cout <<"Capacity "<<s.capacity<<endl;
     s.push('C');
+    //cout <<"Capacity "<<s.capacity<<endl;
     s.push('D');
+   // cout <<"Capacity "<<s.capacity<<endl;
     s.push('E');
+    //cout <<"Capacity "<<s.capacity<<endl;
 
     cout <<s.peek()<<endl;
     cout <<s.pop()<<endl;

@@ -37,7 +37,7 @@ public:
     {
         if((top+1)>=capacity)
         {
-            cout <<"Stack Overlow"<<endl;
+            cout <<"Stack OverFlow"<<endl;
             return;
         }
         top++;
